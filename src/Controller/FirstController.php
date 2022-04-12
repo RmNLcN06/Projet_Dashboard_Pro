@@ -25,10 +25,17 @@ class FirstController extends AbstractController
     // Fonction quiu retourne une Réponse car Symfony est un framework se basant sur un système de Requête / Réponse
     public function sayHello(Request $request, $name, $firstname): Response
     {
-        dd($request);
         return $this->render('first/hello.html.twig', [
             'nom' => $name,
             'prenom' => $firstname,
         ]);
+    }
+
+    #[Route('multi/{entier1}/{entier2}', name: 'app_say.hello')]
+    // Fonction quiu retourne une Réponse car Symfony est un framework se basant sur un système de Requête / Réponse
+    public function multiplication($entier1, $entier2)
+    {
+        $resultat = $entier1 * $entier2;
+        return new Response("<h1>$resultat</h1>");
     }
 }
