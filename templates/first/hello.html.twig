@@ -8,6 +8,8 @@
         
     </head>
     <body>
-        <h1>Hello {{nom}} {{prenom}}</h1>
+        <h1>Hello {{nom | capitalize}} {{prenom | capitalize}}</h1>
+        <h2>Nous sommes le {{ "now" | date("m/d/Y")}}</h2>
+        <img src=" {{ asset('assets/images/') ~ path | defaultImage}} " alt="">
     </body>
 </html>

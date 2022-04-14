@@ -10,6 +10,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class FirstController extends AbstractController
 {
     // Attribut
+
+    #[Route('/order/{maVar}', name: 'test.order.route')]
+    public function testOrderRoute($maVar)
+    {
+        return new Response(
+            "<html><body>$maVar</body></html>"
+        );
+    }
+
     // '/first' est la Requete
     #[Route('/first', name: 'app_first')]
     // Fonction quiu retourne une Réponse car Symfony est un framework se basant sur un système de Requête / Réponse
@@ -28,10 +37,11 @@ class FirstController extends AbstractController
         return $this->render('first/hello.html.twig', [
             'nom' => $name,
             'prenom' => $firstname,
+            "path" => '    ',
         ]);
     }
 
-    #[Route('multi/{entier1}/{entier2}', name: 'app_say.hello')]
+    #[Route('multi/{entier1<\d+>}/{entier2<\d+>}', name: 'app_multiplication')]
     // Fonction quiu retourne une Réponse car Symfony est un framework se basant sur un système de Requête / Réponse
     public function multiplication($entier1, $entier2)
     {
