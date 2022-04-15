@@ -11,6 +11,12 @@ class FirstController extends AbstractController
 {
     // Attribut
 
+    #[Route('/template', name: 'template')]
+    public function template()
+    {
+        return $this->render('template.html.twig');
+    }
+
     #[Route('/order/{maVar}', name: 'test.order.route')]
     public function testOrderRoute($maVar)
     {
@@ -30,7 +36,7 @@ class FirstController extends AbstractController
         ]);
     }
 
-    #[Route('/sayHello/{name}/{firstname}', name: 'app_say.hello')]
+    // #[Route('/sayHello/{name}/{firstname}', name: 'app_say.hello')]
     // Fonction quiu retourne une Réponse car Symfony est un framework se basant sur un système de Requête / Réponse
     public function sayHello(Request $request, $name, $firstname): Response
     {
